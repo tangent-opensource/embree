@@ -174,6 +174,9 @@ ELSE()
   LIST(APPEND ISPC_DEFINITIONS -DTASKING_INTERNAL)
 ENDIF()
 
+# ====== Tangent Rez Deps
+include(${CMAKE_CURRENT_SOURCE_DIR}/rez_deps.cmake)
+
 ##############################################################
 # Compiler
 ##############################################################
