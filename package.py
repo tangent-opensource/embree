@@ -2,7 +2,7 @@
 
 name = 'embree'
 
-version = '3.8.0-ta.1.0.0'
+version = '3.8.0-ta.1.1.0'
 
 authors = [
     'benjamin.skinner',
@@ -18,11 +18,11 @@ def private_build_requires():
     if 'win' in str(sys.platform):
         return ['visual_studio']
     else:
-        return ['gcc-7']
+        return ['gcc-6']
 
 variants = [
     ['platform-windows', 'arch-x64', 'os-windows-10'],
-    #['platform-linux', 'arch-x64'],
+    ['platform-linux', 'arch-x86_64', 'os-centos-7'],
 ]
 
 build_system = "cmake"
@@ -35,8 +35,14 @@ def commands():
     env.EMBREE_PACKAGE_VERSION.set(split_versions[1])
 
     env.EMBREE_ROOT.set("{root}")
+    env.EMBREE_ROOT_DIR.set("{root}")
     env.EMBREE_INCLUDE_DIR.set("{root}/include")
     env.EMBREE_LIBRARY_DIR.set("{root}/lib")
+
+    import sys
+    if 'win' not in str(sys.platform):
+        env.EMBREE_LIBRARY_DIR.set("{root}/lib64")
+
     env.EMBREE_BINARY_DIR.set("{root}/bin")
 
     env.PATH.append( str(env.EMBREE_BINARY_DIR) )
