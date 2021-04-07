@@ -2,9 +2,10 @@
 
 name = 'embree'
 
-version = '3.8.0-ta.1.1.0'
+version = '3.8.0-ta.1.2.0'
 
 authors = [
+    'alex.fuller',
     'benjamin.skinner',
 ]
 
