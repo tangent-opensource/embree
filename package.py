@@ -2,7 +2,7 @@
 
 name = 'embree'
 
-version = '3.8.0-ta.1.2.0'
+version = '3.8.0-ta.1.2.1'
 
 authors = [
     'alex.fuller',
@@ -43,6 +43,7 @@ def commands():
     import sys
     if 'win' not in str(sys.platform):
         env.EMBREE_LIBRARY_DIR.set("{root}/lib64")
+        env.LD_LIBRARY_PATH.append("{root}/lib64")
 
     env.EMBREE_BINARY_DIR.set("{root}/bin")
 
